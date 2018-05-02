@@ -1,2 +1,16 @@
-<h1>User#new</h1>
-<p>Find me in app/views/user/new.html.erb</p>
+<h1> Vous pouvez créer votre compte ici</h1>
+
+<form action="/user" method="post">
+
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Nom d'utilisateur:</br>
+    <input type="text" name="name"></br>
+    Email</br>
+    <input type="text" name="email"></input></br>
+    Password</br>
+    <input type="text" name="password"></input></br>
+    Confirm password</br>
+    <input type="text" name="password_confirmation"></input></br>
+    <input type="submit" value="Create Account">
+
+</form>

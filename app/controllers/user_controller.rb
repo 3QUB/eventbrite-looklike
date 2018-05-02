@@ -5,8 +5,13 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(name: params["name"], email: params["email"], password: params["password"], password_confirmation: params["password_confirmation"])
-    @user.save
-    redirect_to user_path(@user)
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -24,4 +29,5 @@ class UserController < ApplicationController
 
   def index
   end
+  
 end

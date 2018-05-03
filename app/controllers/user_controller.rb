@@ -16,12 +16,6 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if logged_in?
-      unless @user = current_user
-        redirect_to root_path
-      end
-    end
-
   end
 
   def edit

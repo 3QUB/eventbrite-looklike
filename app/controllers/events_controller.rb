@@ -15,13 +15,32 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    permitted_columns = params.require(:event).permit(:name, :location, :description, :date_event)
+    @event.update_attributes(permitted_columns)
+
+    redirect_to event_path(@event)
+  end
+
+  def destroy 
+    @event = Event.find(params[:id])
+    @event.destroy
+  
+    redirect_to event_index_path, notice: "Delete success"
   end
 
   def index
+    @event = event.all
   end
+  
 
   private
 

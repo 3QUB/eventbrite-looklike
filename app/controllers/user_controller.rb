@@ -19,15 +19,26 @@ class UserController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    permitted_columns = params.require(:user).permit(:name, :email)
+    @user.update_attributes(permitted_columns)
+
+    redirect_to user_path(@user)
   end
 
-  def destroy
+  def destroy 
+    @user = User.find(params[:id])
+    @user.destroy
+  
+    redirect_to user_index_path, notice: "Delete success"
   end
 
   def index
+    @user = user.all
   end
   
 end

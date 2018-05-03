@@ -63,7 +63,13 @@ class EventsController < ApplicationController
     @user = User.find(params[:user_id])
     @event.attendees << @user
     redirect_to event_user_invited_path
-    
+  end
+
+  def submit_uninvite
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+    EventsUsers.find_by_event_id_and_user_id(@event.id,@user.id).destroy
+    redirect_to event_user_invited_path
   end
 
   private

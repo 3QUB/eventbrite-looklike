@@ -5,13 +5,13 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@event) do |f| %>
       <%= f.label :location %>
-      <%= f.text_field :location %>
+      <%= f.text_field :location, class: 'form-control' %>
 
       <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, class: 'form-control' %>
 
       <%= f.label :date_event %>
-      <%= f.date_field :date_event %>
+      <%= f.date_field :date_event, class: 'form-control' %>
 
       <%= f.submit "Create my event", class: "btn btn-primary" %>
     <% end %>

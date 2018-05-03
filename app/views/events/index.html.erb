@@ -17,8 +17,8 @@
         <td><%= event.attendees.count %></td>
           <% if event.attendees.include?current_user %>
             <td><%= link_to 'Se désinscrire', 
-              event_subscribe_path(event), 
-                        method: :post %></td>
+                      event_subscribe_path(event), 
+                                method: :post %></td>
           <% else %>
             <td><%= link_to 'Participer', 
                       event_subscribe_path(event), 

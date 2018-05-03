@@ -46,7 +46,12 @@ class EventsController < ApplicationController
     @event.attendees << current_user
     redirect_to events_path
   end
-  
+
+  def unsubscribe
+    @event = Event.find(params[:event_id])
+    EventsUsers.find_by_event_id_and_user_id(@event.id,current_user.id).destroy
+    redirect_to events_path
+  end  
 
   private
 

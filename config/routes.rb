@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post '/subscribe',   to: 'events#subscribe'
     post '/unsubscribe', to: 'events#unsubscribe'
     get  '/invite',      to: 'events#invite'
-    post '/invite/:user_id',      to: 'events#submit_invit', :constraints => { :id => /[\w+\.]+/ }
+    post '/invite/:user_id',      to: 'events#submit_invit', :constraints => { :id => /[^\/]+/ }
   end
   get    '/login',       to: 'sessions#new'
   post   '/login',       to: 'sessions#create'

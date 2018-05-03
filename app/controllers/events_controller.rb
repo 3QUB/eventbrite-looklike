@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   def subscribe
     @event = Event.find(params[:id])
     @event.attendees << current_user
-    redirect_to event_path(@event)
+    redirect_to events_path
   end
   
 

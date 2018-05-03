@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post '/subscribe',   to: 'events#subscribe'
     post '/unsubscribe', to: 'events#unsubscribe'
     get  '/invite',      to: 'events#invite'
-    post '/invite(/:user_id)',      to: 'events#submit_invit', as: 'user_invited'
+    post '/invite(/:user_id)',      to: 'events#submit_invite', as: 'user_invited'
   end
   get    '/login',       to: 'sessions#new'
   post   '/login',       to: 'sessions#create'

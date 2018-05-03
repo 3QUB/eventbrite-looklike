@@ -1,4 +1,4 @@
-<h1>Liste de tous les events</h1>
+<h1>Liste de tous les events à venir</h1>
 
 <div class="container table-responsive">            
   <table class="table table-striped">
@@ -11,21 +11,49 @@
     </thead>
     <tbody>
     <% @event.each do |event| %>
+      <%if event.date_event.future?%>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.date_event %></td>
+          <td><%= event.attendees.count %></td>
+            <% if event.attendees.include?current_user %>
+              <td><%= link_to 'Se désinscrire', 
+                        event_unsubscribe_path(event), 
+                                  method: :post %></td>
+            <% else %>
+              <td><%= link_to 'Participer', 
+                        event_subscribe_path(event), 
+                                  method: :post %></td>
+            <% end %>
+          <td><%= link_to "Plus d'informations", event_path(event.id) %></td>
+        </tr>
+      <% end %>  
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h1>Liste de tous les events passés</h1>
+
+<div class="container table-responsive">            
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= event.name %></td>
-        <td><%= event.date_event %></td>
-        <td><%= event.attendees.count %></td>
-          <% if event.attendees.include?current_user %>
-            <td><%= link_to 'Se désinscrire', 
-                      event_unsubscribe_path(event), 
-                                method: :post %></td>
-          <% else %>
-            <td><%= link_to 'Participer', 
-                      event_subscribe_path(event), 
-                                method: :post %></td>
-          <% end %>
-        <td><%= link_to "Plus d'informations", event_path(event.id) %></td>
+        <th>Name</th>
+        <th>Date</th>
+        <th># Attendees</th>
       </tr>
+    </thead>
+    <tbody>
+    <% @event.each do |event| %>
+      <%if event.date_event.past?%>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.date_event %></td>
+          <td><%= event.attendees.count %></td>
+          <td><%= link_to "Plus d'informations", event_path(event.id) %></td>
+        </tr>
+      <% end %>  
     <% end %>
     </tbody>
   </table>

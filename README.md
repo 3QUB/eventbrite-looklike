@@ -1,24 +1,55 @@
-# README
+# Week 5 - Day 4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Objectifs des exercices
 
-Things you may want to cover:
+Créer un Eventbrite look-like en en faisant des CRUD, login & session.<br/>
+[Voir et tester l'App sur Heroku](https://dry-meadow-50132.herokuapp.com/)
 
-* Ruby version
 
-* System dependencies
+## Capacité de l'App :
 
-* Configuration
+* Création de compte utilisateurs
+* Login automatique après avoir créé son compte
+* Case Remember pour garder la session
+* Follow-up session grâce aux cookies
+* Inviter et désinscrire d'autres utilisateurs à ses évènements
+* S'inscrire et se désinscrire d'un évènement
+* Voir l'historique des évènements passés
+* Modifier les évènements une fois créé
+* Restriction des pages en fonction de l'utilisateurs connecté
+* Personnalisation des boutons en fonction de l'utilisateur connecté
 
-* Database creation
+## Lancer l'app en local
 
-* Database initialization
+```
+$ cd nom_du_dossier
+$ bundle install --without production
+$ rails db:create
+$ rails db:migrate
+```
 
-* How to run the test suite
+## Pré-requis
 
-* Services (job queues, cache servers, search engines, etc.)
+Projet libre de droit et d'accès à la lecture/écriture. 
+Pour pouvoir visualiser le projet, un simple navigateur suffit.
 
-* Deployment instructions
 
-* ...
+```
+Firefox, Safari, Chrome, Internet Explorer 8, ...
+```
+
+## Construit avec
+
+* Visual Studio Code
+* GitHub
+* Heroku
+* De l'amour et des chouquettes
+
+
+## Contributors
+
+* Quentin : https://github.com/QUB-SPG
+
+## Slack
+
+* Quentin : @Quentin

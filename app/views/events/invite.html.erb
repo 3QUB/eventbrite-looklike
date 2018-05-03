@@ -13,13 +13,12 @@
       <tr>
         <% if @event.creator.id == user.id %>
         <% else %>
-          <% if @event.attendees.include?user %>
             <td><%= user.name %></td>
+            <% if @event.attendees.include?user %>
             <td><%= link_to 'Désinscrire', 
                     event_user_uninvited_path(@event.id,user), 
                                       method: :post %></td>
           <% else %>
-            <td><%= user.name %></td>
             <td><%= link_to 'Inviter', 
                     event_user_invited_path(@event.id,user), 
                                       method: :post %></td>

@@ -13,7 +13,7 @@
       <tr>
         <td><%= attendee.name %></td>
             <td><%= link_to 'Inviter', 
-                      event_invite_path(@event,attendee), 
+                      event_invite_path(@event.id,attendee.id), 
                                 method: :post %></td>
       </tr>
     <% end %>

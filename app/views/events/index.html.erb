@@ -16,9 +16,8 @@
         <td><%= event.date_event %></td>
         <td><%= event.attendees.count %></td>
         <td><%= link_to 'Participer', 
-                   subscribe_event_path(event), 
-                            method: :post, 
-                            data: { confirm: 'We are waiting for you!' } %></td>
+                   event_subscribe_path(event.id), 
+                            method: :post} %></td>
         <td><%= link_to "Plus d'informations", event_path(event.id) %></td>
       </tr>
     <% end %>

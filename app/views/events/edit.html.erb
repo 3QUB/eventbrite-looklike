@@ -1,4 +1,4 @@
-
+<% if logged_in? %>
 <% if @event.creator == current_user %>
   <h1> Vous pouvez éditer votre évènement</h1>
 
@@ -32,5 +32,15 @@
                               method: :delete, 
                               data: { confirm: 'Are you sure?' } %>
 <% else %>
+<div class="container table-responsive">  
 <h1> Vous n'êtes pas le créateur de cet event, vous ne pouvez le modifier<h1>
+</div>
+<% end %>
+<% else %>
+<div class="container">
+  <h1>Bienvenue !</h1>
+
+  <%= link_to "Créer un compte", new_user_path, class: "btn btn-lg btn-primary" %> </br>
+  <%= link_to "Ou connectez-vous", login_path, class: "btn btn-lg btn-primary" %>
+</div>
 <% end %>

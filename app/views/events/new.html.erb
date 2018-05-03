@@ -1,7 +1,8 @@
+<% if logged_in? %>
 <% provide(:title, 'Create event') %>
-<h1>Create event</h1>
 
-<div class="row">
+<div class="row container">
+<h1>Create event</h1>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@event) do |f| %>
       <%= f.label :name %>
@@ -20,3 +21,11 @@
     <% end %>
   </div>
 </div>
+<% else %>
+<div class="container">
+  <h1>Bienvenue !</h1>
+
+  <%= link_to "Créer un compte", new_user_path, class: "btn btn-lg btn-primary" %> </br>
+  <%= link_to "Ou connectez-vous", login_path, class: "btn btn-lg btn-primary" %>
+</div>
+<% end %>

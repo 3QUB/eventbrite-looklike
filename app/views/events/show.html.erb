@@ -1,5 +1,6 @@
-<h2>Information sur l'event : <%= @event.name %></h2>
+<% if logged_in? %>
 <div class="container table-responsive">            
+<h2>Information sur l'event : <%= @event.name %></h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -36,3 +37,11 @@
     </tbody>
   </table>
 </div>
+<% else %>
+<div class="container">
+  <h1>Bienvenue !</h1>
+
+  <%= link_to "Créer un compte", new_user_path, class: "btn btn-lg btn-primary" %> </br>
+  <%= link_to "Ou connectez-vous", login_path, class: "btn btn-lg btn-primary" %>
+</div>
+<% end %>

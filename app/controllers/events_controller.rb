@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @event = event.all
+    @event = Event.all
   end
   
 

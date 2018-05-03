@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
+  has_many :created_events, class_name: 'Event', foreign_key: :creator_id
+  has_and_belongs_to_many :attended_events, join_table: "events_users", class_name: 'Event'
+
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

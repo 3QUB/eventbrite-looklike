@@ -1,2 +1,36 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+
+<% if @event.creator == current_user %>
+  <h1> Vous pouvez éditer votre évènement</h1>
+
+  <%= form_for @event do |event| %>
+    <p>
+      <%= event.label :name %><br>
+      <%= event.text_field :name, class: 'form-control'  %>
+    </p>
+
+    <p>
+      <%= event.label :location %><br>
+      <%= event.text_field :location, class: 'form-control' %>
+    </p>
+
+      <p>
+      <%= event.label :description %><br>
+      <%= event.text_area :description, class: 'form-control' %>
+    </p>
+
+      <p>
+      <%= event.label :date_event %><br>
+      <%= event.datetime_field :date_event, class: 'form-control' %>
+    </p>
+
+    <p>
+      <%= event.submit %>
+    </p>
+    <% end %>
+    <%= link_to 'Delete', 
+                  event_path(@event.id), 
+                              method: :delete, 
+                              data: { confirm: 'Are you sure?' } %>
+<% else %>
+<h1> Vous n'êtes pas le créateur de cet event, vous ne pouvez le modifier<h1>
+<% end %>

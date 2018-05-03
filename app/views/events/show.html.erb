@@ -15,6 +15,7 @@
         <td><%= @event.location %></td>
         <td><%= @event.description %></td>
         <td><%= @event.date_event %></td>
+        <td><%= @event.attendees.count %></td>
           <% if @event.attendees.include?current_user %>
             <td><%= link_to 'Se désinscrire', 
                       event_subscribe_path(@event), 

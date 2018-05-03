@@ -11,7 +11,7 @@
     <tbody>
     <% @users.each do |user| %>
       <tr>
-        <% if @event.creator == current_user %>
+        <% if @event.creator.id == user.id %>
         <% else %>
           <% if @event.attendees.include?user %>
             <td><%= user.name %></td>

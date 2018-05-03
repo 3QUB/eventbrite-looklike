@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
   
-    redirect_to event_index_path, notice: "Delete success"
+    redirect_to user_path(@event.creator_id), notice: "Delete success"
   end
 
   def index

@@ -1,6 +1,33 @@
-<h1>Bienvenue <%= @user.name %></h1>
+<h1>Bienvenue sur votre profil <%= @user.name %></h1>
 
-<h2>Voici vos events</h2>
+<h2>Voici les events que vous avez créé</h2>
+<div class="container table-responsive">            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% (@user.created_events).each do |event| %>
+      <tr>
+        <td><%= event.location %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date_event %></td>
+        <td><%= link_to "Modifier", edit_event_path(event.id) %></td>
+        <td>  <%= link_to 'Delete', 
+                   event_path(event.id), 
+                            method: :delete, 
+                            data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h2>Voici les events auxquels vous participez</h2>
 <div class="container table-responsive">            
   <table class="table table-striped">
     <thead>

@@ -40,6 +40,11 @@ class EventsController < ApplicationController
   def index
     @event = Event.all
   end
+
+  def subscribe
+    event.attendees << current_user
+    redirect_to event_path(event)
+  end
   
 
   private

@@ -53,6 +53,18 @@ class EventsController < ApplicationController
     redirect_to events_path
   end  
 
+  def invite
+    @event = Event.find(params[:event_id])
+  end
+
+  def submit_invite
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+    @even.attendees << @user
+    redirect_to event_invite_path
+    
+  end
+
   private
 
   def event_params

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :events do
     post '/subscribe',   to: 'events#subscribe'
     post '/unsubscribe', to: 'events#unsubscribe'
+    get  '/invite',      to: 'events#invite'
+    post '/invite/:user_id',      to: 'events#submit_invit'
   end
   get    '/login',       to: 'sessions#new'
   post   '/login',       to: 'sessions#create'

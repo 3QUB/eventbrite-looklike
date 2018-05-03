@@ -1,0 +1,25 @@
+<% if event.attendees.include?current_user %>
+<h1>Vous pouvez inviter ces utilisateurs à votre évènement</h1>
+
+<div class="container table-responsive">            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @event.attendees.each do |attendee| %>
+      <tr>
+        <td><%= attendee.name %></td>
+            <td><%= link_to 'Inviter', 
+                      event_invite_path(@event,attendee), 
+                                method: :post %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<h1> Vous n'êtes pas le créateur de cet event, vous ne pouvez inviter d'autres utilisateurs<h1>
+<% end %>

@@ -9,11 +9,11 @@
       </tr>
     </thead>
     <tbody>
-    <% @event.attendees.each do |attendee| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= attendee.name %></td>
+        <td><%= user.name %></td>
             <td><%= link_to 'Inviter', 
-                      event_invite_path(@event.id,attendee.id), 
+                      event_invite_path(@event.id,user.id), 
                                 method: :post %></td>
       </tr>
     <% end %>

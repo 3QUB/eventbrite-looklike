@@ -55,6 +55,7 @@ class EventsController < ApplicationController
 
   def invite
     @event = Event.find(params[:event_id])
+    @users = User.all
   end
 
   def submit_invite

@@ -49,7 +49,7 @@ class EventsController < ApplicationController
 
   def unsubscribe
     @event = Event.find(params[:event_id])
-    EventsUsers.find_by_event_id_and_user_id(@event.id,current_user.id).destroy
+    @event.attendees.delete(current_user)
     redirect_to events_path
   end  
 
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
   def submit_uninvite
     @event = Event.find(params[:event_id])
     @user = User.find(params[:user_id])
-    EventsUsers.find_by_event_id_and_user_id(@event.id,@user.id).destroy
+    @event.attendees.delete(@user)
     redirect_to event_user_invited_path
   end
 
